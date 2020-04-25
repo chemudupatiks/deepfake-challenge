@@ -57,16 +57,6 @@ def all_frames_frm_video(video_path):
     while(cap.isOpened()):
         ret, frame = cap.read()
         if ret==True:
-            # print(frame.shape)
-            # box = bounds(frame)[0]
-            # print(box)
-            # frame = frame[box[1]:box[3], box[0]:box[2]]
-            # print(frame)
-            # print(frame.shape)
-            # fig = plt.figure()
-            # ax = fig.add_subplot(111)
-            # frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
-            # ax.imshow(frame)
             frames.append(frame)
             if cv.waitKey(1) & 0xFF == ord('q'):
                 break
@@ -74,16 +64,6 @@ def all_frames_frm_video(video_path):
             break
     cap.release()
     return np.array(frames)
-
-    # print(img)
-    # # print(ret)
-    # # print(frame)
-    # fig = plt.figure()
-    # ax = fig.add_subplot(111)
-    # frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
-    # print(frame.shape)
-    # ax.imshow(frame)
-    # img.release()
 
 def training_ds(video_path, video_name, num_imgs):
     print(video_path)
@@ -95,41 +75,17 @@ def training_ds(video_path, video_name, num_imgs):
     all_faces = []
     idx = 0
     for i in range(temp_x.shape[0]):
-        frame = temp_x[i]
-        # print(frame)
-        # fig = plt.figure()
-        # ax = fig.add_subplot(111)
-        frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
-        
-        # ax.imshow(frame)
-        # print(bounds(temp_x[i]))
-        # gray = cv.cvtColor(temp_x[i], cv.COLOR_BGR2GRAY)
+        frame = cv.cvtColor(temp_x[i], cv.COLOR_BGR2RGB)
         faces = bounds(frame)
         all_faces += list(faces)
-        # plt.imshow(face)
-        # print(faces.shape)
-        # print(faces.dtype)
-        # # print(box)
-        # # frame = temp_x[i][box[1]:box[3], box[0]:box[2]]
-        # fig = plt.figure()
-        # ax = fig.add_subplot(111)
-        # # frame = cv.cvtColor(face, cv.COLOR_BGR2RGB)
-        # frame = face
-        # ax.imshow(frame)
-        # break
-    # return 
-        # temp_x[i] = temp_x[i][box[1]:box[3], box[0]:box[2]]
     temp_y = np.empty(len(all_faces), dtype=object)
     temp_y[:] = metadata.label[metadata.index == video_name]
-    # return temp_x, temp_y
+
     return np.array(all_faces), temp_y
 
 
 temp = missing_data(metadata)
 fake_sample_videos = list(metadata.loc[metadata.label=='FAKE'].sample(4).index)
-
-# for video_path in fake_sample_videos:
-#     img_frm_video(os.path.join(data_dir, sample_training_data, video_path))
 
 training_x = []
 training_y = []
