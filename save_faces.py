@@ -62,9 +62,9 @@ def ExtractFaces(video_dir_path, output_dir, n_frames):
 '''
 Main Script 
 '''
-# video_dir_path = 'C:\\Users\\ckris\\Desktop\\DeepFakeProject\\deepfake-detection-challenge\\train_sample_videos\\'
-video_dir_path = 'C:/Users/ckris/Desktop/DeepFakeProject/deepfake-detection-challenge/train_sample_videos/'
-output_dir = 'C:/Users/ckris/Desktop/DeepFakeProject/Faces/'
+# video_dir_path = 'deepfake-detection-challenge\\train_sample_videos\\'
+video_dir_path = 'deepfake-detection-challenge/train_sample_videos/'
+output_dir = 'Faces/'
 s = time.time()
 ExtractFaces(video_dir_path, output_dir, 50)
 print(time.time()-s)

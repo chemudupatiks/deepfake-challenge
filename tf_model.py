@@ -39,7 +39,7 @@ def process_path(file_path):
     image = decode_img(image)
     return image, label
     
-project_dir = 'C:/Users/ckris/Desktop/DeepFakeProject/'
+project_dir = 'DeepFakeProject/'
 video_dir_path = project_dir +'deepfake-detection-challenge/train_sample_videos/'
 faces = project_dir+'Faces/'
 

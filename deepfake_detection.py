@@ -18,11 +18,11 @@ from face_recognition_box import bounds
 import cv2 as cv
 
 #Loading data
-data_dir = "C:/Users/ckris/Desktop/DeepFakeProject/deepfake-detection-challenge/"
-training_data="C:/Users/ckris/Desktop/DeepFakeProject/dfdc_train_part_0"
+data_dir = "deepfake-detection-challenge/"
+training_data="dfdc_train_part_0"
 sample_training_data = "train_sample_videos"
 test_data = "test_videos"
-haar_cascade = "C:/Users/ckris/Desktop/DeepFakeProject/haar-cascades-for-face-detection"
+haar_cascade = "haar-cascades-for-face-detection"
 
 metadata= pd.read_json(os.path.join(os.path.join(data_dir,sample_training_data), "metadata.json"))
 
