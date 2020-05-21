@@ -24,9 +24,8 @@ import numpy as np
 @params: pixels: matrix of pixel values of the image
 @params: path  : path to the pre-trained haarcascade models
 """
-def bounds(pixels):
+def bounds(pixels, path):
     classifier = MTCNN(select_largest=False, post_process=False, keep_all=True, device='cuda:0')
-    img = Image.fromarray(pixels)
     bboxes = classifier(pixels)
     faces = []
     if (len(list(bboxes.shape)) > 3):
@@ -34,6 +33,8 @@ def bounds(pixels):
             # print(bbox.shape)
             face = bbox.permute(1, 2, 0).int().numpy()
             if len(faces)>0:
+                img = Image.fromarray(face)
+                img.save(path)
                 faces = np.append(faces, [face], axis=0)
             else:
                 faces = np.array([face])
